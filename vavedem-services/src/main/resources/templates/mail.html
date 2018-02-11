@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+
+
+    <table border="0" cellpadding="0" cellspacing="0" width="800">
+
+        <tr>
+            <td align="center" valign="top" width="100%">
+                <table border="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td valign="top">
+                            <b>Denumirea autoritatii sau institutiei publice: </b><span th:text="${institutie}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="30%">
+                            <b>Adresa: </b><span th:text="${adresaInstitutie}"></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td valign="top" width="30%">
+                            <b>Data: </b><span th:text="${data}"></span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+
+        <tr>
+            <td><br/><br/></td>
+        </tr>
+
+        <tr>
+            <td align="center" valign="top" width="100%">
+                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td valign="top">
+                                        <span>Stimate domnule/Stimată doamnă,</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td><br/></td>
+                    </tr>
+
+                    <tr>
+                        <td><br/></td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" valign="top">
+                            <table border="0" cellpadding="0" cellspacing="5" width="100%">
+
+                                <tr>
+                                    <td valign="top">
+                                        <span>Prin prezenta formulez o cerere conform Legii 544/2001 privind liberul acces la informaţiile de interes public.</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <span>Doresc să primesc o copie a următoarelor documente:</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <b th:text="${documente}"></b>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><br/></td>
+                                </tr>
+
+                                <tr>
+                                    <td valign="top">
+                                        <span>Doresc ca informaţiile solicitate să-mi fie furnizate în format electronic, la următoarea adresă de e-mail: <b th:text="${replyEmail}"></b></span> 
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td valign="top">
+                                        <span>Va multumesc pentru solicitudine,</span>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td><br/></td>
+                                </tr>
+
+                                <tr>
+                                    <td valign="top">
+                                        <span>Numele si prenumele petentului: <span th:text="${nume}"></span>,</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <span>Adresa:  <span th:text="${adresaPetent}"></span></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td valign="top">
+                                        <span>Telefon  <span th:text="${telefon}"></span></span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" valign="top" width="50%">
+                <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                    <tr>
+                        <td>
+                            <img src="http://gov.ro/front/view/img/logo.png" width="90" style="max-width:90px;" class="columnImage" />
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+
+</html>

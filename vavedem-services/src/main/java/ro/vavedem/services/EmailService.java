@@ -1,16 +1,6 @@
 package ro.vavedem.services;
 
 import com.sendgrid.*;
-
-import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
-import ro.vavedem.exceptions.VaVedemEmailException;
-import ro.vavedem.interfaces.MailService;
-import ro.vavedem.models.EmailModel;
-import ro.vavedem.persistence.repository.EmailRepository;
-
-import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
 import java.nio.file.DirectoryStream;
 import java.nio.file.Files;
@@ -18,7 +8,15 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Map;
+import javax.xml.bind.DatatypeConverter;
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import ro.vavedem.exceptions.VaVedemEmailException;
+import ro.vavedem.interfaces.MailService;
+import ro.vavedem.models.EmailModel;
+import ro.vavedem.persistence.repository.EmailRepository;
 
 /**
  * @author CoruptiaUcide
@@ -34,6 +32,9 @@ public class EmailService implements MailService<EmailModel> {
     @Autowired
     private EmailRepository repository;
 
+    @Autowired
+    private MailContentBuilder contentBuilder;
+
     @Value("${spring.mail.apikey}")
     private String sendGridApiKey;
 
@@ -45,7 +46,8 @@ public class EmailService implements MailService<EmailModel> {
         Email from = new Email(model.getFrom());
         String subject = model.getSubject();
         Email to = new Email(model.getTo());
-        Content content = new Content("text/plain", model.getContent());
+        String cnt = contentBuilder.build(model.getContent());
+        Content content = new Content("text/html", cnt);
         Mail mail = new Mail(from, subject, to, content);
 
         Map<String, String> fileNames = listFormulare(formulareDir);

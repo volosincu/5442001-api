@@ -1,8 +1,7 @@
 package ro.vavedem.models;
 
-import lombok.Data;
-
 import javax.validation.constraints.NotNull;
+import lombok.Data;
 
 /**
  * @author CoruptiaUcide
@@ -18,7 +17,8 @@ public class EmailModel {
     @NotNull
     private String subject;
     @NotNull
-    private String content;
+    private EmailContentModel content;
+
     private String formular;
 
 
