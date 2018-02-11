@@ -11,7 +11,7 @@ spring:
       roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
     mail:
       apikey: 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
-      formularedir: /home/user/formulare
+      formularedir: /home/yamaha/formulare
 ---
 
 # Development profile
@@ -23,7 +23,7 @@ spring:
     datasource:
         url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
         username: postgres
-        password: postgres
+        password: 
         driver-class-name: org.postgresql.Driver
         dialect: org.hibernate.dialect.PostgreSQLDialect
         max-active: 5
@@ -40,62 +40,5 @@ spring:
     queries:
         users-query: select username, password from users where username=?
         roles-query: select u.username, r.role from users u inner join user_role ur on(u.id=ur.user_id) inner join role r on(ur.role_id=r.id) where u.username=?
-    mail:
-        apikey: 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
----
-
-# Heroku profile - current test
-
-server:
-    port: 8090
-
-spring:
-    profile: heroku
-    main:
-        web-environment: false
-    datasource:
-        url: jdbc:postgresql://ec2-54-163-228-58.compute-1.amazonaws.com:5432/dfvo2f9it4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
-        username: ucokaucbriaged
-        password:
-        driver-class-name: org.postgresql.Driver
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        max-active: 5
-        max-pool: 10
-        max-idle: 0
-    jpa:
-        properties:       # do not user ddl-auto: create/update on a shared DB
-            hibernate:
-                temp:
-                    use_jdbc_metadata_defaults: false
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
-    mail:
-        apikey: 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
-
-
----
-# Test profile
-
-server:
-    port: 8090
-
-spring:
-    profile: test
-    main:
-        web-environment: false
-    datasource:
-        url: jdbc:postgresql://ec2-54-16123-228-58.compute-1.amazonaws.com:5432/dfvo2f9i123t4pmk9?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
-        username: ucokau123cbriaged
-        password:
-        driver-class-name: org.postgresql.Driver
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        max-active: 5
-        max-pool: 10
-        max-idle: 0
-    jpa:
-        properties:
-            hibernate:
-                temp:
-                    use_jdbc_metadata_defaults: false
-        database-platform: org.hibernate.dialect.PostgreSQLDialect
     mail:
         apikey: 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

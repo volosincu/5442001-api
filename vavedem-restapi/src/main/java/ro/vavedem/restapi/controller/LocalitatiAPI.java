@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import ro.vavedem.exceptions.VaVedemApiException;
@@ -70,7 +69,7 @@ public class LocalitatiAPI {
     @ApiOperation(value = "Creaza o noua intrare in baza de date.", tags = {"localitate"})
     @RequestMapping(value = {"/localitati"}, method = {RequestMethod.POST}, produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    @PreAuthorize("isFullyAuthenticated() and hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("isFullyAuthenticated() and hasRole('ROLE_ADMIN')")
     public ResponseEntity<LocalitateModel> createLocalitate(@RequestBody @Valid LocalitateModel model) {
         logger.info("post localitate: JSON: " + model.toString());
 
