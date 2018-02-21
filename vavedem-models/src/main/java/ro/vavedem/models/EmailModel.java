@@ -8,8 +8,6 @@ import lombok.Data;
  */
 @Data
 public class EmailModel {
-
-
     @NotNull
     private String from;
     @NotNull
@@ -20,6 +18,4 @@ public class EmailModel {
     private EmailContentModel content;
 
     private String formular;
-
-
 }

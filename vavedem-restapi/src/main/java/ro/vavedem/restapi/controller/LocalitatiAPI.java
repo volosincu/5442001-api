@@ -19,8 +19,8 @@ import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
-import static ro.vavedem.restapi.constants.ApiMessageConstants.ASIGURATIVA_CA_DATELE_INTRODUSE_SUNT_CORECTE;
-import static ro.vavedem.restapi.constants.ApiMessageConstants.EROARE_INTERNA_INCERCATI_MAI_TARZIU;
+import static ro.vavedem.restapi.constants.AppConstantsAndUtils.ASIGURATIVA_CA_DATELE_INTRODUSE_SUNT_CORECTE;
+import static ro.vavedem.restapi.constants.AppConstantsAndUtils.EROARE_INTERNA_INCERCATI_MAI_TARZIU;
 
 /**
  * Controller for both public and app related info about localities
@@ -33,11 +33,15 @@ public class LocalitatiAPI {
     @Autowired
     private Service<LocalitateModel> localitateService;
 
+//    @Autowired
+//    private LocalitateSpecRepo localitateSpecRepo;
+
     @ApiOperation(value = "Intoarce lista cu toate localitatiile.", tags = {"localitate"})
     @RequestMapping(value = {"/localitati"}, method = {RequestMethod.GET})
     @ResponseBody
     public ResponseEntity<List<LocalitateModel>> getLocalitati() {
         logger.info("getting localities");
+
         long startTime = System.currentTimeMillis();
         long startDBCall = System.currentTimeMillis();
         long startConversion = System.currentTimeMillis();
@@ -93,6 +97,15 @@ public class LocalitatiAPI {
         return new ResponseEntity<LocalitateModel>(saved, HttpStatus.CREATED);
 
     }
+
+//    @RequestMapping(value = "/localities", method = RequestMethod.GET)
+//    public ResponseEntity<List<Localitate>> getSpecs() {
+//        List<Localitate> localities = new ArrayList<>();
+//
+//        localitateSpecRepo.findAll(LocalitySpecification.isCity());
+//
+//        return new ResponseEntity<>(localities, HttpStatus.OK);
+//    }
 
     @ApiOperation(value = "Intoarce detaliile localitatii cu id-ul dat.", tags = {"localitate"})
     @RequestMapping(value = {"/localitati/{id}"}, method = {RequestMethod.GET})
